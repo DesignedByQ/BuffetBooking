@@ -1,5 +1,10 @@
 package com.mock.buffetbooking.service;
 
-public class ServiceDAO {
+import com.mock.buffetbooking.dto.BookingDTO;
+
+
+public interface ServiceDAO {
+	
+	public BookingDTO bookBuffetService(BookingDTO bookingDTO);
 
 }
