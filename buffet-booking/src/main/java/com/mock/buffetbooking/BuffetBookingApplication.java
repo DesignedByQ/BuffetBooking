@@ -4,8 +4,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+//@ComponentScan("com.mock.buffetbooking.repo.BookingRepo")
 public class BuffetBookingApplication {
 
 	public static void main(String[] args) {
@@ -14,7 +16,7 @@ public class BuffetBookingApplication {
 	
 	@Bean
 	public ModelMapper modelMapper() {
-		return modelMapper();
+		return new ModelMapper();
 	}
 
 }

@@ -2,11 +2,10 @@ package com.mock.buffetbooking.entity;
 
 import java.time.LocalDate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import jakarta.persistence.*;
+
+
+import jakarta.annotation.Generated;
 
 @Entity
 @Table(name="booking")
