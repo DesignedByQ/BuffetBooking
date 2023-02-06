@@ -9,17 +9,36 @@ public class BookingDTO {
 	private String emailId;
 	private Integer plateCount;
 	private LocalDate bookedOn;
+	private String message;
 	
 	public BookingDTO() {
 		super();
 	}
 
-	public BookingDTO(String buffetName, String emailId, Integer plateCount, LocalDate bookedOn) {
+	public BookingDTO(Integer bookingId, String buffetName, String emailId, Integer plateCount, LocalDate bookedOn, String message) {
 		super();
+		this.bookingId = bookingId;
 		this.buffetName = buffetName;
 		this.emailId = emailId;
 		this.plateCount = plateCount;
 		this.bookedOn = bookedOn;
+		this.message = message;
+	}
+	
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public Integer getBookingId() {
+		return bookingId;
+	}
+
+	public void setBookingId(Integer bookingId) {
+		this.bookingId = bookingId;
 	}
 
 	public String getBuffetName() {
@@ -56,8 +75,8 @@ public class BookingDTO {
 
 	@Override
 	public String toString() {
-		return "BookingDTO [buffetName=" + buffetName + ", emailId=" + emailId + ", plateCount=" + plateCount
-				+ ", bookedOn=" + bookedOn + "]";
+		return "BookingDTO [bookingId=" + bookingId + ", buffetName=" + buffetName + ", emailId=" + emailId + ", plateCount=" + plateCount
+				+ ", bookedOn=" + bookedOn + ", message=" + message + "]";
 	}
 	
 	
