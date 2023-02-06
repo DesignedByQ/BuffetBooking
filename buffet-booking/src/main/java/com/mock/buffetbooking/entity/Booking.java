@@ -17,6 +17,7 @@ public class Booking {
 	private String buffetName;
 	private String emailId;
 	private Integer plateCount;
+	@Column(name="booked_on", unique = true)
 	private LocalDate bookedOn;
 	private String message;
 	

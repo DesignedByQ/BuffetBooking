@@ -22,22 +22,28 @@ public class ControllerAPI {
 	@PostMapping(value="/booking", consumes={"application/json", "application/xml"})
 	public ResponseEntity<BookingDTO> bookBuffet(@RequestBody BookingDTO bookingDTO){
 		
-		BookingDTO B = serviceDAO.bookBuffetService(bookingDTO);
+		try {
+			
+			BookingDTO B = serviceDAO.bookBuffetService(bookingDTO);
+			
+			if(B.getBookingId() != null) {
+				
+				B.setMessage("Successfully completed booking: " + B.getBookingId());
+				
+				return new ResponseEntity<BookingDTO>(B, HttpStatus.CREATED);
+				
+			} 
 		
-		if(B.getBookingId() != null) {
+		} catch (Exception e) { 
 			
-			B.setMessage("Successfully completed booking: " + B.getBookingId());
+			bookingDTO.setMessage("Booking unsuccessful " + e);
 			
-			return new ResponseEntity<BookingDTO>(B, HttpStatus.CREATED);
 			
-		} else {
-			
-			B.setMessage("Booking unsuccessful");
-			
-			return new ResponseEntity<BookingDTO>(B, HttpStatus.CREATED);
 			
 		}
 		
+		return new ResponseEntity<BookingDTO>(bookingDTO, HttpStatus.NOT_ACCEPTABLE);
+			
 		//return {ResponseEntity.status(HttpStatus.OK).body(serviceDAO.bookBuffetService(bookingDTO))};
 	}
 	
