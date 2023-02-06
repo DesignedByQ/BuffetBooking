@@ -12,6 +12,8 @@ import com.mock.buffetbooking.dto.BookingDTO;
 import com.mock.buffetbooking.entity.Booking;
 import com.mock.buffetbooking.repo.BookingRepo;
 
+import jakarta.transaction.Transactional;
+
 @Service(value="serviceDAO")
 public class ServiceDAOImpl implements ServiceDAO {
 	
@@ -22,6 +24,7 @@ public class ServiceDAOImpl implements ServiceDAO {
 	private ModelMapper model;
 	
 	@Override
+	@Transactional
 	public BookingDTO bookBuffetService(BookingDTO bookingDTO) {
 		
 		Booking B = repo.save(model.map(bookingDTO, Booking.class));
@@ -30,6 +33,7 @@ public class ServiceDAOImpl implements ServiceDAO {
 	}
 
 	@Override
+	@Transactional
 	public List<BookingDTO> getBuffetService() {
 
 		List<Booking> op = repo.findAll();
