@@ -1,5 +1,9 @@
 package com.mock.buffetbooking.service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +27,23 @@ public class ServiceDAOImpl implements ServiceDAO {
 		Booking B = repo.save(model.map(bookingDTO, Booking.class));
 
 		return model.map(B, BookingDTO.class);
+	}
+
+	@Override
+	public List<BookingDTO> getBuffetService() {
+
+		List<Booking> op = repo.findAll();
+		
+		List<BookingDTO> b = new ArrayList();
+		
+		for(Booking a: op) {
+			
+			b.add(model.map(a, BookingDTO.class));
+			
+		}
+		
+		return b;
+		
 	}
 
 	
